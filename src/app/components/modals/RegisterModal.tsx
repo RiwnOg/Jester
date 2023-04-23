@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-import Modal from './Modal';
+import Modal from '@/components/modals/Modal';
 import Heading from '@/components/Heading';
 import Button from '@/components/Button';
 import Input from '@/components/inputs/Input';
