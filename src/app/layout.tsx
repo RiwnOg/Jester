@@ -1,7 +1,10 @@
 import './globals.css';
-import Providers from './providers';
-
 import { Nunito } from 'next/font/google';
+
+import Providers from './providers';
+import Navbar from '@/navbar/Navbar';
+import ClientOnly from '@/components/ClientOnly';
+import Modal from '@/components/modals/modal';
 
 const font = Nunito({
   subsets: ['latin'],
@@ -23,7 +26,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className={font.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <ClientOnly>
+            <Navbar />
+          </ClientOnly>
+          {children}
+        </Providers>
       </body>
     </html>
   );
