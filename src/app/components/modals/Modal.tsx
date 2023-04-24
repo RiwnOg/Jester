@@ -75,9 +75,15 @@ const Modal: React.FC<modalProps> = ({
             justify-center
             overflow-y-auto
             overflow-x-hidden
-            bg-neutral-800/70
             focus:outline-none'
       >
+        <div
+          className='
+            fixed
+            inset-0
+            bg-neutral-800/70'
+          onClick={handleClose}
+        />
         <div
           className='
               relative
@@ -116,6 +122,9 @@ const Modal: React.FC<modalProps> = ({
                 shadow-lg
                 outline-none
                 focus:outline-none
+                dark:bg-slate-700
+                dark:shadow-sm
+                dark:shadow-slate-600
                 md:h-auto
                 lg:h-auto
               '
@@ -132,20 +141,24 @@ const Modal: React.FC<modalProps> = ({
                   p-6
                   '
               >
+                <div className='text-lg font-semibold'>{title}</div>
                 <button
                   onClick={handleClose}
                   className='
                     absolute
-                    left-9
-                    border-0
+                    right-9
+                    rounded-full
+                    border-2
                     p-1
                     transition
+                    hover:border-red-500
+                    hover:text-red-500
                     hover:opacity-70
+
                   '
                 >
                   <IoMdClose size={18} />
                 </button>
-                <div className='text-lg font-semibold'>{title}</div>
               </div>
               {/* BODY */}
               <div className='relative flex-auto p-6'>{body}</div>

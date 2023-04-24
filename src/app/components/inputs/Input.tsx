@@ -56,6 +56,7 @@ const Input: React.FC<inputsProps> = ({
           transition
           disabled:cursor-not-allowed
           disabled:opacity-70
+          dark:bg-slate-900
           ${formatPrice ? 'pl-9' : 'pl-4'}
           ${errors[id] ? 'border-rose-500' : 'border-neutral-300'} 
           ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
@@ -77,7 +78,7 @@ const Input: React.FC<inputsProps> = ({
               peer-focus:-translate-y-4
               peer-focus:scale-75
               ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
-
+              
               
 
               `}

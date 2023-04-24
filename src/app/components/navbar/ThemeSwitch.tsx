@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes';
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
-  return null;
   return (
     <select
       value={theme}

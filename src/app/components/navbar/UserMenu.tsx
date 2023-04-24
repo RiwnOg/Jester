@@ -1,12 +1,19 @@
 'use client';
 
 import { AiOutlineMenu } from 'react-icons/ai';
+import { GiArchiveRegister } from 'react-icons/gi';
+import { BiLogIn } from 'react-icons/bi';
+import { RxMoon, RxSun } from 'react-icons/rx';
 import Avatar from '@/components/Avatar';
 import { useCallback, useState } from 'react';
 import MenuItem from '@/navbar/MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import { useTheme } from 'next-themes';
+import { useRouter } from 'next/navigation';
 
 const UserMenu = () => {
+  const router = useRouter();
+  const { theme, setTheme } = useTheme();
   const registerModal = useRegisterModal();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,10 +25,10 @@ const UserMenu = () => {
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
         <div
-          onClick={() => {}}
+          onClick={() => router.push('/home')}
           className='
-            block
-            cursor-pointer
+          hidden
+          cursor-pointer
             rounded-full
             border-[1px]
             border-purple-200
@@ -33,6 +40,7 @@ const UserMenu = () => {
             hover:bg-slate-200
             dark:hover:bg-slate-300
             dark:hover:text-black
+            md:block
             '
         >
           Your Home
@@ -66,27 +74,62 @@ const UserMenu = () => {
         {isOpen && (
           <div
             className='
-                absolute
-                right-0
-                top-12
-                w-3/4
-                overflow-hidden
-                rounded-xl
-                text-sm
-                shadow-md
-                dark:bg-slate-600
-                '
+              absolute
+              right-0
+              top-7
+              w-48
+              overflow-hidden
+              rounded-xl
+              border
+              border-slate-400
+              bg-white
+              text-sm
+              shadow-md
+              dark:border-white
+              dark:bg-slate-600
+              md:top-10
+            '
           >
+            <div
+              className='fixed inset-0 z-[-1]'
+              onClick={toggleOpen}
+            />
+
             <div className='flex cursor-pointer flex-col'>
               <>
                 <MenuItem
                   onClick={() => {}}
                   label='Login'
+                  icon={BiLogIn}
                 />
                 <MenuItem
-                  onClick={registerModal.onOpen}
+                  onClick={() => {
+                    toggleOpen();
+                    registerModal.onOpen();
+                  }}
                   label='Sign up'
+                  icon={GiArchiveRegister}
                 />
+                <hr />
+                {theme === 'light' ? (
+                  <MenuItem
+                    onClick={() => {
+                      setTheme('dark');
+                      toggleOpen();
+                    }}
+                    label='Theme: Light'
+                    icon={RxSun}
+                  />
+                ) : (
+                  <MenuItem
+                    onClick={() => {
+                      setTheme('light');
+                      toggleOpen();
+                    }}
+                    label='Theme: Dark'
+                    icon={RxMoon}
+                  />
+                )}
               </>
             </div>
           </div>

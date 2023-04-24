@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 import Modal from '@/components/modals/Modal';
@@ -33,13 +33,18 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
+    const toastId = toast.loading('Saving...');
     axios
       .post('/api/register', data)
       .then(() => {
+        toast.success('Welcome to Jester! 👋', { id: toastId, duration: 1000 });
         registerModal.onClose();
       })
       .catch((error) => {
-        toast.error('Something went wrong. 😢');
+        toast.error('Something went wrong. 😢\n' + error.message, {
+          id: toastId,
+          duration: 6000,
+        });
       })
       .finally(() => {
         setIsLoading(false);
@@ -48,7 +53,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
   const bodyContent = (
     <div className='flex flex-col gap-4'>
       <Heading
-        title='Welcome to Jester'
+        title='I humbly request some information. 👑'
         subtitle='Create an Account!'
       />
       <Input
@@ -100,6 +105,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
           text-center
           font-light
           text-neutral-500
+          dark:text-white
         '
       >
         <div
@@ -118,6 +124,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
               cursor-pointer
               text-neutral-800
               hover:underline
+              dark:text-neutral-400
             '
           >
             Log In

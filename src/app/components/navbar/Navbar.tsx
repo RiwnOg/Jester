@@ -1,7 +1,6 @@
 'use client';
 import Container from '@/components/Container';
 import Logo from '@/navbar/Logo';
-import ThemeSwitch from '@/navbar/ThemeSwitch';
 import UserMenu from '@/navbar/UserMenu';
 
 const Navbar = () => {
@@ -12,7 +11,6 @@ const Navbar = () => {
           <div className='flex flex-row items-center justify-between gap-3'>
             <Logo />
             <div className='flex flex-row items-center justify-between gap-3'>
-              <ThemeSwitch />
               <UserMenu />
             </div>
           </div>
