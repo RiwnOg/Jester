@@ -1,22 +1,22 @@
 'use client';
-import Container from '@/components/Container';
+import React, { useState, useEffect } from 'react';
+
+import NavLoading from './NavLoading';
 import Logo from '@/navbar/Logo';
 import UserMenu from '@/navbar/UserMenu';
+import Container from '@/components/Container';
 
 const Navbar = () => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) return <NavLoading />;
+
   return (
-    <div
-      className='
-          fixed
-          z-10
-          w-full
-          border-b-[1px]
-          border-b-purple-500
-          bg-white
-          shadow-sm
-          dark:bg-stone-950
-      '
-    >
+    <div className='fixed z-10 w-full bg-white shadow-sm dark:bg-stone-950'>
       <Container>
         <div className='flex flex-row items-center justify-between gap-3'>
           <Logo />

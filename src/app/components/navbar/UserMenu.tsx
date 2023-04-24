@@ -27,21 +27,21 @@ const UserMenu = () => {
         <div
           onClick={() => router.push('/home')}
           className='
-          hidden
-          cursor-pointer
-            rounded-full
-            border-[1px]
+              hidden
+              cursor-pointer
+              rounded-full
+              border-[1px]
             border-purple-200
-            px-3
-            py-2
-            text-sm
-            font-semibold
-            transition
+              px-3
+              py-2
+              text-sm
+              font-semibold
+              transition
             hover:bg-slate-200
             dark:hover:bg-slate-300
             dark:hover:text-black
-            md:block
-            '
+              md:block
+          '
         >
           Your Home
         </div>
@@ -55,15 +55,15 @@ const UserMenu = () => {
             gap-3
             rounded-full
             border-[1px]
-            border-purple-200
+          border-purple-200
             p-4
             px-2
             py-1 
             shadow-md
             transition
-            hover:bg-slate-200
-            dark:hover:bg-slate-300
-            dark:hover:text-black
+          hover:bg-slate-200
+          dark:hover:bg-slate-300
+          dark:hover:text-black
             '
         >
           <AiOutlineMenu />
@@ -81,12 +81,12 @@ const UserMenu = () => {
               overflow-hidden
               rounded-xl
               border
-              border-slate-400
-              bg-white
+            border-slate-400
+            bg-white
               text-sm
               shadow-md
-              dark:border-white
-              dark:bg-slate-600
+            dark:border-white
+            dark:bg-slate-600
               md:top-10
             '
           >

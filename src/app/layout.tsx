@@ -27,9 +27,9 @@ export default function RootLayout({
     >
       <body className={font.className}>
         <Providers>
+          <Navbar />
           <ClientOnly>
             <RegisterModal />
-            <Navbar />
           </ClientOnly>
           <div className='px-5 py-20'>{children}</div>
         </Providers>
