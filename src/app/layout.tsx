@@ -31,7 +31,7 @@ export default function RootLayout({
             <RegisterModal />
             <Navbar />
           </ClientOnly>
-          {children}
+          <div className='px-5 py-20'>{children}</div>
         </Providers>
       </body>
     </html>
