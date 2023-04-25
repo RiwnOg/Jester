@@ -33,6 +33,9 @@
       "@/navbar/*": [
         "./src/app/components/navbar/*"
       ],
+      "@/libs/*": [
+        "./src/libs/*"
+      ],
     }
   },
   "include": [
