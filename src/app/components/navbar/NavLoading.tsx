@@ -1,4 +1,3 @@
-'use client';
 export default function NavLoading() {
   return (
     <div className='fixed z-10 h-[66px] w-full bg-white shadow-sm dark:bg-stone-950'>
