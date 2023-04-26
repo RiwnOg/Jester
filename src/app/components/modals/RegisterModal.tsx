@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import toast from "react-hot-toast";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { AiFillGithub } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc';
+import { useCallback, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-import Modal from "@/components/modals/Modal";
-import Heading from "@/components/Heading";
-import Button from "@/components/Button";
-import Input from "@/components/inputs/Input";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useLoginModal from "@/app/hooks/useLoginModal";
+import Modal from '@/components/modals/Modal';
+import Heading from '@/components/Heading';
+import Button from '@/components/Button';
+import Input from '@/components/inputs/Input';
+import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 interface RegisterModalProps {}
 
@@ -28,9 +28,9 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
   });
 
@@ -46,15 +46,15 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    const toastId = toast.loading("Saving...");
+    const toastId = toast.loading('Saving...');
     axios
-      .post("/api/register", data)
+      .post('/api/register', data)
       .then(() => {
-        toast.success("Welcome to Jester! 👋", { id: toastId, duration: 1000 });
+        toast.success('Welcome to Jester! 👋', { id: toastId, duration: 4000 });
         onCloseModal();
       })
       .catch((error) => {
-        toast.error("Something went wrong. 😢\n" + error.message, {
+        toast.error('Something went wrong. 😢\n' + error.message, {
           id: toastId,
           duration: 6000,
         });
@@ -65,31 +65,31 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
   };
 
   const bodyContent = (
-    <div className="flex flex-col gap-4">
+    <div className='flex flex-col gap-4'>
       <Heading
-        title="I humbly request some information. 👑"
-        subtitle="Create an Account!"
+        title='I humbly request some information. 👑'
+        subtitle='Create an Account!'
       />
       <Input
-        id="email"
-        label="Email"
+        id='email'
+        label='Email'
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id="name"
-        label="Name"
+        id='name'
+        label='Name'
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id="password"
-        type="password"
-        label="Password"
+        id='password'
+        type='password'
+        label='Password'
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -99,47 +99,47 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
   );
 
   const footerContent = (
-    <div className="mt-3 flex flex-col gap-4">
+    <div className='mt-3 flex flex-col gap-4'>
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label='Continue with Google'
         icon={FcGoogle}
         onClick={() => {}}
       />
       <Button
         outline
-        label="Continue with Github"
+        label='Continue with Github'
         icon={AiFillGithub}
         onClick={() => {}}
       />
       <div
-        className="
+        className='
           mt-4
           text-center
           font-light
           text-neutral-500
           dark:text-white
-        "
+        '
       >
         <div
-          className="
+          className='
             flex
             flex-row
             items-center
             justify-center
             gap-2
-          "
+          '
         >
           <div>Already have an Account?</div>
           <div
             onClick={onToggle}
-            className="
+            className='
               cursor-pointer
               text-neutral-800
               hover:underline
               dark:text-neutral-400
-            "
+            '
           >
             Log In
           </div>
@@ -152,8 +152,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
     <Modal
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Register"
-      actionLabel="Continue"
+      title='Register'
+      actionLabel='Continue'
       onClose={onCloseModal}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
