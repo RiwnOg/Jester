@@ -1,0 +1,44 @@
+{
+  "login": {
+    "success": {
+      "title": "Login Success!",
+      "quotes": ["You are back!!", "Welcome Back!", "I missed you!"]
+    },
+    "error": {
+      "title": "Login Failed!",
+      "quotes": [
+        "I don't know you...",
+        "GUARDS!! GUARDS!!",
+        "Can't seem to find you..."
+      ]
+    },
+    "loading": {
+      "title": "Logging in....",
+      "quotes": ["Checking the list...", "Come here often?"]
+    }
+  },
+  "register": {
+    "success": {
+      "title": "Register Success!",
+      "quotes": ["Welcome to the team", "Everything is good!"]
+    },
+    "error": {
+      "title": "Register Failed!",
+      "quotes": ["Sorry, you don't belong here...", "Next in line, please!"]
+    },
+    "loading": {
+      "title": "Registering...",
+      "quotes": [
+        "Name goes here... Password here...",
+        "Thats a really nice Password!",
+        "Strong name! Well done!"
+      ]
+    }
+  },
+  "generic": {
+    "success": ["Success!", "It Works!"],
+    "error": ["Fail!", "It did not work!"],
+    "loading": ["Loading...", "Just a little longer..."],
+    "generic": ["Have a Toast on Me!"]
+  }
+}
