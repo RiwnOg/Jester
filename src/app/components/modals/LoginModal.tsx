@@ -8,13 +8,13 @@ import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';
 
-import useRegisterModal from '@/app/hooks/useRegisterModal';
-import useLoginModal from '@/app/hooks/useLoginModal';
-
-import Modal from './Modal';
-import Input from '../inputs/Input';
-import Heading from '../Heading';
-import Button from '../Button';
+import Heading from '@/components/Heading';
+import Button from '@/components/Button';
+import { ToastGen } from '@/components/toastGen';
+import Modal from '@/components/modals/Modal';
+import Input from '@/components/inputs/Input';
+import useRegisterModal from '@/hooks/useRegisterModal';
+import useLoginModal from '@/hooks/useLoginModal';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -46,7 +46,12 @@ const LoginModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    const toastId = toast.loading('Login In...');
+    const toastId = toast.loading(
+      <ToastGen
+        origin='login'
+        type='loading'
+      />
+    );
     signIn('credentials', {
       ...data,
       redirect: false,
@@ -54,16 +59,29 @@ const LoginModal = () => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success('Welcome to Jester! 👋', {
-          id: toastId,
-          duration: 4000,
-        });
+        toast.success(
+          <ToastGen
+            origin='login'
+            type='success'
+          />,
+          {
+            id: toastId,
+            duration: 4000,
+          }
+        );
         router.refresh();
         onCloseModal();
       }
 
       if (callback?.error) {
-        toast.error(callback.error, { id: toastId, duration: 5000 });
+        toast.error(
+          <ToastGen
+            origin='register'
+            type='error'
+            messege={callback.error}
+          />,
+          { id: toastId, duration: 5000 }
+        );
       }
     });
   };

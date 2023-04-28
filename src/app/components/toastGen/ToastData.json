@@ -36,9 +36,21 @@
     }
   },
   "generic": {
-    "success": ["Success!", "It Works!"],
-    "error": ["Fail!", "It did not work!"],
-    "loading": ["Loading...", "Just a little longer..."],
-    "generic": ["Have a Toast on Me!"]
+    "success": {
+      "title": "It was a Success!",
+      "quotes": ["Success!", "It Works!", "Huzzah!"]
+    },
+    "error": {
+      "title": "Something went wrong!",
+      "quotes": ["Fail!", "It did not work!", "Try again later!"]
+    },
+    "loading": {
+      "title": "Loading...",
+      "quotes": ["Just a moment...", "Just a little longer..."]
+    },
+    "generic": {
+      "title": "Generic Toast!",
+      "quotes": ["Have a Toast on Me!"]
+    }
   }
 }

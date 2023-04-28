@@ -7,16 +7,15 @@ import { FcGoogle } from 'react-icons/fc';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-import Modal from '@/components/modals/Modal';
 import Heading from '@/components/Heading';
 import Button from '@/components/Button';
+import { ToastGen } from '@/components/toastGen';
+import Modal from '@/components/modals/Modal';
 import Input from '@/components/inputs/Input';
-import useRegisterModal from '@/app/hooks/useRegisterModal';
-import useLoginModal from '@/app/hooks/useLoginModal';
+import useRegisterModal from '@/hooks/useRegisterModal';
+import useLoginModal from '@/hooks/useLoginModal';
 
-interface RegisterModalProps {}
-
-const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
+const RegisterModal: React.FC = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -46,18 +45,33 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    const toastId = toast.loading('Saving...');
+    const toastId = toast.loading(
+      <ToastGen
+        origin='register'
+        type='loading'
+      />
+    );
     axios
       .post('/api/register', data)
       .then(() => {
-        toast.success('Welcome to Jester! 👋', { id: toastId, duration: 4000 });
+        toast.success(
+          <ToastGen
+            origin='register'
+            type='success'
+          />,
+          { id: toastId, duration: 4000 }
+        );
         onCloseModal();
       })
       .catch((error) => {
-        toast.error('Something went wrong. 😢\n' + error.message, {
-          id: toastId,
-          duration: 6000,
-        });
+        toast.error(
+          <ToastGen
+            origin='register'
+            type='error'
+            messege={error.message}
+          />,
+          { id: toastId, duration: 6000 }
+        );
       })
       .finally(() => {
         setIsLoading(false);

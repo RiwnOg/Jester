@@ -36,6 +36,9 @@
       "@/libs/*": [
         "./src/libs/*"
       ],
+      "@/hooks/*": [
+        "./src/app/hooks/*"
+      ],
     }
   },
   "include": [
