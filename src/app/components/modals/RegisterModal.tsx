@@ -14,6 +14,7 @@ import Modal from '@/components/modals/Modal';
 import Input from '@/components/inputs/Input';
 import useRegisterModal from '@/hooks/useRegisterModal';
 import useLoginModal from '@/hooks/useLoginModal';
+import { signIn } from 'next-auth/react';
 
 const RegisterModal: React.FC = () => {
   const registerModal = useRegisterModal();
@@ -119,13 +120,13 @@ const RegisterModal: React.FC = () => {
         outline
         label='Continue with Google'
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label='Continue with Github'
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn('github')}
       />
       <div
         className='

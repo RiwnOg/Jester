@@ -13,3 +13,6 @@ npx prisma init
 npm install next-auth @prisma/client @next-auth/prisma-adapter
 npm i bcrypt
 npm i -D @types/bcrypt
+
+-- Avatar Generator
+https://pravatar.cc/
