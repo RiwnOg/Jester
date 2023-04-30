@@ -4,7 +4,7 @@ import { IconType } from 'react-icons';
 
 interface RouteItemProps {
   label: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: () => void;
   icon?: IconType;
 }
 
@@ -15,6 +15,7 @@ const RouteItem: React.FC<RouteItemProps> = ({
 }) => {
   return (
     <div
+      onClick={onClick}
       className='
         group
         flex

@@ -39,6 +39,9 @@
       "@/hooks/*": [
         "./src/hooks/*"
       ],
+      "@/actions/*": [
+        "./src/app/actions/*"
+      ],
     }
   },
   "include": [

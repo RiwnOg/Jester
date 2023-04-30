@@ -9,15 +9,16 @@ datasource db {
 }
 
 model User {
-  id             String    @id @default(cuid())
+  id             String     @id @default(cuid())
   name           String?
-  email          String?   @unique
+  email          String?    @unique
   emailVerified  DateTime?
   image          String?
   hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime? @updatedAt
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime?  @updatedAt
   Account        Account[]
+  Workload       Workload[]
 }
 
 model Account {
@@ -36,5 +37,18 @@ model Account {
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Workload {
+  id          String    @id @default(cuid())
+  userId      String
+  sistema     String
+  solicitante String
+  demanda     String
+  dt_inicio   DateTime  @default(now())
+  dt_final    DateTime?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@index([userId])
 }
