@@ -15,11 +15,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ onClick, label, icon: Icon }) => {
       className='
         group
         flex
+        cursor-pointer
         flex-row
         gap-2
         p-2
-        font-semibold
-        transition 
+        font-semibold 
+        transition
         hover:bg-slate-200
         dark:hover:bg-slate-300
         dark:hover:text-black

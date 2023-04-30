@@ -2,7 +2,7 @@
 
 import { AiOutlineMenu } from 'react-icons/ai';
 import { GiArchiveRegister } from 'react-icons/gi';
-import { BiLogIn } from 'react-icons/bi';
+import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import { RxMoon, RxSun } from 'react-icons/rx';
 import Avatar from '@/components/Avatar';
 import { useCallback, useState } from 'react';
@@ -33,27 +33,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
         <div
-          onClick={() => router.push('/home')}
-          className='
-              hidden
-              cursor-pointer
-              rounded-full
-              border-[1px]
-            border-purple-200
-              px-3
-              py-2
-              text-sm
-              font-semibold
-              transition
-            hover:bg-slate-200
-            dark:hover:bg-slate-300
-            dark:hover:text-black
-              md:block
-          '
-        >
-          Your Home
-        </div>
-        <div
           onClick={toggleOpen}
           className='
             flex
@@ -62,7 +41,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             items-center
             gap-3
             rounded-full
-            border-[1px]
           border-purple-200
             p-4
             px-2
@@ -74,10 +52,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           dark:hover:text-black
             '
         >
-          <AiOutlineMenu />
-          <div className='hidden md:block'>
-            <Avatar src={currentUser?.image} />
-          </div>
+          {!currentUser ? <p>Sign in</p> : <Avatar src={currentUser?.image} />}
         </div>
         {isOpen && (
           <div
@@ -118,6 +93,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   <MenuItem
                     onClick={() => signOut()}
                     label='Logout'
+                    icon={BiLogOut}
                   />
                 </>
               ) : (
@@ -142,25 +118,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               )}
               <>
                 <hr />
-                {theme === 'light' ? (
-                  <MenuItem
-                    onClick={() => {
-                      setTheme('dark');
-                      toggleOpen();
-                    }}
-                    label='Theme: Light'
-                    icon={RxSun}
-                  />
-                ) : (
-                  <MenuItem
-                    onClick={() => {
-                      setTheme('light');
-                      toggleOpen();
-                    }}
-                    label='Theme: Dark'
-                    icon={RxMoon}
-                  />
-                )}
+                <MenuItem
+                  onClick={() => {
+                    setTheme(theme === 'light' ? 'dark' : 'light');
+                  }}
+                  label={`Theme: ${
+                    theme && theme[0].toUpperCase() + theme.slice(1)
+                  }`}
+                  icon={theme === 'light' ? RxSun : RxMoon}
+                />
               </>
             </div>
           </div>

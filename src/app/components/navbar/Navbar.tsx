@@ -6,6 +6,7 @@ import Logo from '@/navbar/Logo';
 import UserMenu from '@/navbar/UserMenu';
 import Container from '@/components/Container';
 import { SafeUser } from '@/types';
+import RouteMenu from './RouteMenu';
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -25,6 +26,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
       <Container>
         <div className='flex flex-row items-center justify-between gap-3'>
           <Logo />
+          <div className='flex flex-row items-center justify-between gap-3'>
+            <RouteMenu currentUser={currentUser} />
+          </div>
           <div className='flex flex-row items-center justify-between gap-3'>
             <UserMenu currentUser={currentUser} />
           </div>
