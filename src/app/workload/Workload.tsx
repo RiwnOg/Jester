@@ -55,8 +55,8 @@ const Workload: React.FC<WorkloadProps> = ({ data }) => {
                 <TableCell>
                   <div className='flex '>
                     <IconButton
-                      // onClick={() => router.push(`/workload/${item.id}`)}
-                      onClick={() => console.log('Go to: ', item.id)}
+                      onClick={() => router.push(`/workload/${item.id}`)}
+                      // onClick={() => console.log('Go to: ', item.id)}
                     >
                       <AiOutlineEdit size={25} />
                     </IconButton>

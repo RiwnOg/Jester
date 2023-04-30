@@ -1,9 +1,12 @@
-interface pageProps {
-  id: string;
+interface IParams {
+  id?: string;
 }
 
-const page: React.FC<pageProps> = ({ id }) => {
-  return <div>Im {id}</div>;
-};
-
-export default page;
+export default function Page({ params }: { params: IParams }) {
+  return (
+    <div>
+      <h1>My Page</h1>
+      <p>ID: {params.id}</p>
+    </div>
+  );
+}
