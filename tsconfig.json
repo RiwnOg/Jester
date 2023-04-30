@@ -37,7 +37,7 @@
         "./src/libs/*"
       ],
       "@/hooks/*": [
-        "./src/app/hooks/*"
+        "./src/hooks/*"
       ],
     }
   },

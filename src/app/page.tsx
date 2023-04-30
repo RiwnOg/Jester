@@ -1,4 +1,4 @@
-import getUser from '@/actions/getUser';
+import getUser from '@/app/actions/getUser';
 
 export default async function Home() {
   const currentUser = await getUser();
