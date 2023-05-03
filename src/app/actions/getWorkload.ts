@@ -16,8 +16,8 @@ export default async function getWorkload() {
 
     const safeWorkload = workloads.map((workload) => ({
       ...workload,
-      dt_inicio: formatDate(workload.dt_inicio.toString()),
-      dt_final: formatDate(workload.dt_final?.toString()),
+      dt_inicio: formatDate(workload.dt_inicio),
+      dt_final: formatDate(workload.dt_final || ''),
     }));
 
     return safeWorkload;

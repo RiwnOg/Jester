@@ -14,21 +14,16 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
-
-type ModifiedRequestType<K extends keyof Workload> = Omit<Workload, K> & {
-  dt_inicio: string;
-  dt_final?: string;
-};
+import { SafeWorkload } from '@/types';
+import { useState } from 'react';
 
 interface WorkloadProps {
-  data: ModifiedRequestType<'dt_inicio' | 'dt_final'>[];
+  data: SafeWorkload[];
 }
 
-const Workload: React.FC<WorkloadProps> = ({ data }) => {
+export default function Workload({ data }: WorkloadProps) {
   const router = useRouter();
-
   const { theme: applicationTheme } = useTheme();
-
   const darkTheme = createTheme({
     palette: {
       mode: applicationTheme === 'light' ? 'light' : 'dark',
@@ -52,8 +47,8 @@ const Workload: React.FC<WorkloadProps> = ({ data }) => {
           <TableBody>
             {data.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>
-                  <div className='flex '>
+                <TableCell className='flex'>
+                  <>
                     <IconButton
                       onClick={() => router.push(`/workload/${item.id}`)}
                       // onClick={() => console.log('Go to: ', item.id)}
@@ -68,7 +63,7 @@ const Workload: React.FC<WorkloadProps> = ({ data }) => {
                     <IconButton onClick={() => console.log('Close: ', item.id)}>
                       <AiOutlineCheck size={25} />
                     </IconButton>
-                  </div>
+                  </>
                 </TableCell>
                 <TableCell>{item.sistema}</TableCell>
                 <TableCell>{item.solicitante}</TableCell>
@@ -82,6 +77,4 @@ const Workload: React.FC<WorkloadProps> = ({ data }) => {
       </TableContainer>
     </ThemeProvider>
   );
-};
-
-export default Workload;
+}
